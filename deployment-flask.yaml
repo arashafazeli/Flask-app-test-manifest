@@ -1,0 +1,67 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   labels:
+#     app: hello-app
+#   name: hello-deployment
+#   annotations:
+#     link.argocd.argoproj.io/external-link: https://hub.docker.com/repository/docker/clouduserloony/hello-app
+#     argocd-image-updater.argoproj.io/image-list: gcr.io/heptio-images/ks-guestbook-demo:~1
+#     argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-creds
+#     argocd-image-updater.argoproj.io/git-branch: main
+#   finalizers:
+#   - resources-finalizer.argocd.argoproj.io
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       app: hello-app
+#   template:
+#     metadata:
+#       labels:
+#         app: hello-app
+#   spec:
+#       imagePullSecrets:
+#       - name: regcred
+#       containers:
+#       - name: hello-deployment
+#         image: clouduserloony/hello-app:v1
+#         imagePullPolicy: Always
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: hello-app
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   project: default
+#   source:
+#     repoURL: https://github.com/arashafazeli/Flask-app-test-manifest
+#     targetRevision: HEAD
+#     path: manifests/Flask-app-test-manifest
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: default
+#   syncPolicy:
+#     automated:
+#       selfHeal: true
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+spec:
+  selector:
+    matchLabels:
+      app: flask-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+      - name: flask-app
+        image: gcr.io/[gitops-cluster]/flask-app:latest
+        ports:
+        - containerPort: 5000
