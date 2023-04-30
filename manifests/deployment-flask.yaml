@@ -50,6 +50,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: flask-app
+  namespace: default
+  labels:
+    app: flask-app
 spec:
   selector:
     matchLabels:
