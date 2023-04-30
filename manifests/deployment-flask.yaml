@@ -62,6 +62,6 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: eu.gcr.io/gitops-cluster/flask-app:latest
+        image: eu.gcr.io/gitops-cluster/flask-app
         ports:
         - containerPort: 5000
