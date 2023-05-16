@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: webshop-service
-        image: eu.gcr.io/gitops-cluster/flask-app:0.0.1
+        image: eu.gcr.io/gitops-cluster/webshop-service:0.0.1
         ports:
         - containerPort: 5001
 ---
