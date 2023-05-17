@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: webshop-service
-        image: eu.gcr.io/gitops-cluster/webshop-service:0.0.4
+        image: flask-webshop-test
         ports:
         - containerPort: 5001
 ---
