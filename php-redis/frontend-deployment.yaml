@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: php-redis
-        image: eu.gcr.io/gitops-cluster/php-redis:0.0.1
+        image: eu.gcr.io/gitops-cluster/php-redis:0.0.10
         env:
         - name: GET_HOSTS_FROM
           value: "dns"
