@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: webapp1
-        image: eu.gcr.io/gitops-cluster/chatbot:0.0.14
+        image: eu.gcr.io/gitops-cluster/chatbot:0.0.15
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
