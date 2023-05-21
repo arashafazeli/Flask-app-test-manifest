@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: webapp1
-        image: eu.gcr.io/gitops-cluster/chatbot:0.0.19
+        image: eu.gcr.io/gitops-cluster/chatbot:0.0.20
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
