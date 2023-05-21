@@ -35,6 +35,12 @@ spec:
       containers:
       - name: webapp1
         image: eu.gcr.io/gitops-cluster/chatbot:0.0.15
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: root-password
+              name: mysql-secret
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
